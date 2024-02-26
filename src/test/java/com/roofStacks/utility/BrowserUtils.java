@@ -15,6 +15,8 @@ import java.util.Set;
 
 public class BrowserUtils {
 
+
+
     /*
 
     this method will accept int (in seconds) and execute Thread.sleep
@@ -133,15 +135,16 @@ public class BrowserUtils {
      *
      * @param targetTitle
      */
+    public static String origin;
     public static void switchToWindow(String targetTitle) {
-        String origin = Driver.getDriver().getWindowHandle();
+   //  origin = Driver.getDriver().getWindowHandle();
         for (String handle : Driver.getDriver().getWindowHandles()) {
             Driver.getDriver().switchTo().window(handle);
             if (Driver.getDriver().getTitle().toLowerCase().contains(targetTitle.toLowerCase())) {
                 break;
             }
         }
-        Driver.getDriver().switchTo().window(origin);
+    //   Driver.getDriver().switchTo().window(origin);
     }
 
     /**

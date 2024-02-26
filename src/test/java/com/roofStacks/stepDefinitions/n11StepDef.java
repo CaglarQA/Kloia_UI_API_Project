@@ -6,6 +6,9 @@ import com.roofStacks.utility.ConfigurationReader;
 import com.roofStacks.utility.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.io.output.BrokenWriter;
+import org.junit.Assert;
+import org.openqa.selenium.Keys;
 
 public class n11StepDef {
 
@@ -19,15 +22,32 @@ public class n11StepDef {
     public void log_in_with_facebook() {
         mainPage.signInBtn.click();
         mainPage.withFacebookLogin.click();
-        mainPage.popupHandle.click();
+     //  mainPage.popupHandle.click();
+        BrowserUtils.waitFor(3);
         BrowserUtils.switchToWindow("Facebook");
-        mainPage.faceBookLogin.sendKeys("ali");
+        System.out.println("Driver.getDriver().getTitle() = " + Driver.getDriver().getTitle());
 
+        BrowserUtils.waitFor(5);
+     //   mainPage.facabookPopup.click();
+
+        mainPage.faceBookLogin.sendKeys(ConfigurationReader.getProperty("faceUser"));
+        mainPage.facebookPass.sendKeys(ConfigurationReader.getProperty("facePass"), Keys.ENTER);
+
+      //  mainPage.continueAlev.click();
+
+        BrowserUtils.waitFor(4);
 
 
     }
     @Then("verify succesful login")
     public void verify_succesful_login() {
+        BrowserUtils.waitFor(2);
+        BrowserUtils.switchToWindow("n11");
+
+        System.out.println("Driver.getDriver().getTitle() = " + Driver.getDriver().getTitle());
+
+//        Assert.assertTrue(Driver.getDriver().getTitle().contains("n11"));
+        Assert.assertEquals("n11 - 10 Üzerinden 11'lik Alışveriş Deneyimi",Driver.getDriver().getTitle());
 
     }
 }

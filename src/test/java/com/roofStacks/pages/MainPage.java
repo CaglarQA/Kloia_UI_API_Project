@@ -23,5 +23,11 @@ public class MainPage extends BasePage {
     @FindBy(id = "pass")
     public WebElement facebookPass;
 
+    @FindBy(id = "u_0_h_A1")
+    public WebElement facabookPopup;
+
+    @FindBy(id = "mount_0_0_fS")
+    public WebElement continueAlev;
+
 
 }
