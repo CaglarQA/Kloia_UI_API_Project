@@ -46,7 +46,6 @@ public class n11StepDef {
 
         System.out.println("Driver.getDriver().getTitle() = " + Driver.getDriver().getTitle());
 
-//        Assert.assertTrue(Driver.getDriver().getTitle().contains("n11"));
         Assert.assertEquals("n11 - 10 Üzerinden 11'lik Alışveriş Deneyimi",Driver.getDriver().getTitle());
 
     }
