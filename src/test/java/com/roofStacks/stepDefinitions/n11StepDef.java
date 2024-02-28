@@ -18,35 +18,31 @@ public class n11StepDef {
     public void navigate_to(String link) {
         Driver.getDriver().get(ConfigurationReader.getProperty(link));
     }
+
     @When("log in with facebook")
     public void log_in_with_facebook() {
         mainPage.signInBtn.click();
         mainPage.withFacebookLogin.click();
-     //  mainPage.popupHandle.click();
+        //  mainPage.popupHandle.click();
         BrowserUtils.waitFor(3);
         BrowserUtils.switchToWindow("Facebook");
         System.out.println("Driver.getDriver().getTitle() = " + Driver.getDriver().getTitle());
 
         BrowserUtils.waitFor(5);
-     //   mainPage.facabookPopup.click();
+        //   mainPage.facabookPopup.click();
 
         mainPage.faceBookLogin.sendKeys(ConfigurationReader.getProperty("faceUser"));
         mainPage.facebookPass.sendKeys(ConfigurationReader.getProperty("facePass"), Keys.ENTER);
 
-      //  mainPage.continueAlev.click();
-
         BrowserUtils.waitFor(4);
 
-
     }
+
     @Then("verify succesful login")
     public void verify_succesful_login() {
         BrowserUtils.waitFor(2);
         BrowserUtils.switchToWindow("n11");
-
-        System.out.println("Driver.getDriver().getTitle() = " + Driver.getDriver().getTitle());
-
-        Assert.assertEquals("n11 - 10 Üzerinden 11'lik Alışveriş Deneyimi",Driver.getDriver().getTitle());
+        Assert.assertEquals("n11 - 10 Üzerinden 11'lik Alışveriş Deneyimi", Driver.getDriver().getTitle());
 
     }
 }
